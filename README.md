@@ -3,6 +3,7 @@ Queueing with .NET Core & RabbitMQ
 
 ## Prerequisites
 - .NET Core 2.1
+- RabbitMQ connection data in BrokerEndpoint (local or remote)
 
 ## Run
 ### Consumer
