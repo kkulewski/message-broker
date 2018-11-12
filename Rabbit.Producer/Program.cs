@@ -10,8 +10,6 @@ namespace Rabbit.Producer
         public static void Main()
         {
             Task.Run(async () => { await RunWorkers(); }).GetAwaiter().GetResult();
-            Console.WriteLine("## Press [enter] to exit.");
-            Console.ReadLine();
         }
 
         public static async Task RunWorkers()

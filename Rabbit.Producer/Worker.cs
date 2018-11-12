@@ -5,7 +5,7 @@ using RabbitMQ.Client;
 
 namespace Rabbit.Producer
 {
-    public class Worker
+    internal class Worker
     {
         private readonly Random _random;
         private readonly IConnectionFactory _connectionFactory;
