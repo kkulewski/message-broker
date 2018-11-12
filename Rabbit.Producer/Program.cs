@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Rabbit.Endpoint;
 
-namespace RabbitProducer
+namespace Rabbit.Producer
 {
     class Program
     {
@@ -19,7 +20,7 @@ namespace RabbitProducer
             var workers = new List<Worker>();
             for (var i = 0; i < 5; i++)
             {
-                workers.Add(new Worker(i));
+                workers.Add(new Worker(i, FactoryProvider.Instance));
             }
 
             Console.WriteLine("## Starting tasks...");

@@ -1,4 +1,4 @@
-﻿namespace RabbitProducer
+﻿namespace Rabbit.Endpoint
 {
     public class BrokerEndpoint
     {

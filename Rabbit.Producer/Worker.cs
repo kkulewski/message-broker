@@ -3,24 +3,18 @@ using System.Text;
 using System.Threading;
 using RabbitMQ.Client;
 
-namespace RabbitProducer
+namespace Rabbit.Producer
 {
     public class Worker
     {
         private readonly Random _random;
-        private readonly ConnectionFactory _connectionFactory;
+        private readonly IConnectionFactory _connectionFactory;
 
-        public Worker(int id)
+        public Worker(int id, IConnectionFactory connectionFactory)
         {
             Id = id;
             _random = new Random();
-            _connectionFactory = new ConnectionFactory
-            {
-                HostName = BrokerEndpoint.HostName,
-                UserName = BrokerEndpoint.UserName,
-                VirtualHost = BrokerEndpoint.VirtualHost,
-                Password = BrokerEndpoint.Password
-            };
+            _connectionFactory = connectionFactory;
         }
 
         public int Id { get; }
@@ -40,7 +34,7 @@ namespace RabbitProducer
                     autoDelete: false,
                     arguments: null);
 
-                string message = $"[{DateTime.Now}] Number {delay} from worker {this.Id}!";
+                string message = $"[{DateTime.Now}] Number {delay} from worker {Id}!";
                 var body = Encoding.UTF8.GetBytes(message);
 
                 channel.BasicPublish(
